@@ -1,7 +1,3 @@
-# curso-docker
-C urso Docker básico
-
-
 https://github.com/cod3rcursos/curso-docker
 
 6 O QUE É Docker
@@ -283,7 +279,7 @@ Criar uma pasta ex: primeiro-build, criar o arquivo Dockerfile (Só o D maiuscul
 
 --Imagem que vai se basear e imprimir o texto
 FROM nginx:latest
-RUN echo '<h1> Hello World !</h1>' > /usr/share/nginx/html/index.html
+RUN echo <h1> Hello World !</h1> > /usr/share/nginx/html/index.html
 
 --entrar na pasta primeiro-build
 
@@ -331,7 +327,7 @@ Criar uma pasta build-com-copy
 FROM nginx:latest
 LABEL maintainer 'Aluno Marcio <aluno at marcio.com.br>'
 
-RUN ech o '<h1>Sem conteudo</h1' > /usr/share/nginx/html/conteudo.html
+RUN echo '<h1>Sem conteudo</h1' > /usr/share/nginx/html/conteudo.html
 
 COPY *.html /usr/share/nginx/html/
 
@@ -489,16 +485,25 @@ npm init -y
 rpm i --save express@4.15.3 mongoose@4.11.1 node-restful@0.2.6 body-parser@1.17.2 cors@2.8.3
 
 
---Comandos utéis para pesquisar comandos por tag quando lembro só parte de um comando substituir pelo "Tag"
 
-history | grep "tag"
 
-history | grep "tag" --color
+ 
 
---Buscar dentro de um arquivo por uma determinada palavra ex: "pata"
-cat /C/Users/marci/Desktop/Estudo/Aula.txt | grep "pasta" --color
-
---pegar ultimas e primeiras linhas de  determinados arquivos
-head -n10 Dockerfile
-
-tail -n3 Dockerfile
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
