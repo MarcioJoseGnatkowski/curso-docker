@@ -1,0 +1,69 @@
+version: '3'
+volumes:
+  dados:
+#redes com nome banco e web
+networks:
+  banco:
+  web:
+  fila:
+services:
+  db:
+    image: postgres:9.6
+    volumes:
+      # Volume dos dados
+      - dados:/var/lib/postgresql/data
+      # Scripts não deu certo, pois ele não conseguiu mapear o volume da minha máquina, teve que criar um
+      #- ./scripts:/scripts
+      #- ./scripts/init.sql/:/docker-entrypoint-initdb.d/init.sql/
+      # Scripts
+      - ./scripts:/exemplo1
+      - ./exemplo1/init.sql/:/docker-entrypoint-initdb.d/init.sql/
+    networks: 
+      - banco 
+  frontend:
+    image: nginx:1.13
+    volumes:
+      #Site
+      - ./web:/usr/share/nginx/html/
+      #configuração do proxy reverso
+      - ./nginx/default.conf:/etc/nginx/conf.d/default.conf
+    ports:
+      - 80:80
+    networks: 
+      - web 
+    depends_on:
+      - app
+  app:
+    image: python:3.6
+    volumes:
+      #Aplicação
+      - ./app:/app
+    working_dir: /app
+    #bash da permissão senao vai dar access denied
+    command: bash ./app.sh
+    networks: 
+      - banco
+      - web
+      - fila
+    depends_on:
+      - db
+      - queue
+    environment:
+      - DB_NAME=email_sender
+  queue:
+    image: redis:3.2
+    networks:
+      - fila
+  worker:
+    build: worker 
+    volumes: 
+      # Worker
+      - ./worker:/worker
+    working_dir: /worker
+    command: worker.py
+    networks:
+      - fila
+    depends_on:
+      - queue
+
+  
