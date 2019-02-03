@@ -484,7 +484,19 @@ npm init -y
 --Aqui ele vai instalar as dependencias, mas não precisa desse comando, pois o package.json vai fazer isso
 rpm i --save express@4.15.3 mongoose@4.11.1 node-restful@0.2.6 body-parser@1.17.2 cors@2.8.3
 
+--Comandos utéis para pesquisar comandos por tag quando lembro só parte de um comando substituir pelo "Tag"
 
+history | grep "tag"
+
+history | grep "tag" --color
+
+--Buscar dentro de um arquivo por uma determinada palavra ex: "pata"
+cat /C/Users/marci/Desktop/Estudo/Aula.txt | grep "pasta" --color
+
+--pegar ultimas e primeiras linhas de  determinados arquivos
+head -n10 Dockerfile
+
+tail -n3 Dockerfile
 
 
  
